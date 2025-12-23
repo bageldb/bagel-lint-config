@@ -15,6 +15,18 @@ const filesToCopy = [
     src: path.join(__dirname, '../editorconfig/.editorconfig'),
     dest: path.join(process.cwd(), '.editorconfig'),
   },
+  {
+    src: path.join(__dirname, '../tsconfig/tsconfig.json'),
+    dest: path.join(process.cwd(), 'tsconfig.json'),
+  },
+  {
+    src: path.join(__dirname, '../tsconfig/tsconfig.app.json'),
+    dest: path.join(process.cwd(), 'tsconfig.app.json'),
+  },
+  {
+    src: path.join(__dirname, '../tsconfig/tsconfig.node.json'),
+    dest: path.join(process.cwd(), 'tsconfig.node.json'),
+  },
 ]
 
 console.log('📦 Setting up @bagelink/lint-config...')

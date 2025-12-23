@@ -14,9 +14,9 @@ ESLint and Prettier configuration for Vue 3 + TypeScript projects.
 
 ```bash
 # Install all dependencies
-bun add -d @bagelink/lint-config eslint prettier eslint-plugin-vue eslint-config-prettier globals @typescript-eslint/eslint-plugin @typescript-eslint/parser vue-eslint-parser typescript simple-git-hooks lint-staged
+bun add -d @bagelink/lint-config eslint prettier eslint-plugin-vue eslint-config-prettier globals @typescript-eslint/eslint-plugin @typescript-eslint/parser vue-eslint-parser typescript simple-git-hooks lint-staged vue-tsc
 
-# Auto-setup (copies .prettierignore and .editorconfig)
+# Auto-setup (copies config files)
 bunx bagel-lint-setup
 
 # Create eslint.config.js
@@ -55,7 +55,7 @@ npm install -D github:bageldb/lint-config eslint prettier eslint-plugin-vue esli
 ### 1. Install Dependencies
 
 ```bash
-bun add -d @bagelink/lint-config eslint prettier eslint-plugin-vue eslint-config-prettier globals @typescript-eslint/eslint-plugin @typescript-eslint/parser vue-eslint-parser typescript simple-git-hooks lint-staged
+bun add -d @bagelink/lint-config eslint prettier eslint-plugin-vue eslint-config-prettier globals @typescript-eslint/eslint-plugin @typescript-eslint/parser vue-eslint-parser typescript simple-git-hooks lint-staged vue-tsc
 ```
 
 ### 2. Run Auto-Setup
@@ -64,7 +64,12 @@ bun add -d @bagelink/lint-config eslint prettier eslint-plugin-vue eslint-config
 bunx bagel-lint-setup
 ```
 
-This copies `.prettierignore` and `.editorconfig` to your project root.
+This copies the following to your project root:
+- `.prettierignore`
+- `.editorconfig`
+- `tsconfig.json`
+- `tsconfig.app.json`
+- `tsconfig.node.json`
 
 ### 3. Create ESLint Config
 
@@ -225,7 +230,20 @@ Automatically runs on every commit (configured via `simple-git-hooks`):
 
 - `.prettierignore` — Ignore build outputs, dependencies, IDE files
 - `.editorconfig` — Consistent editor settings (2 spaces, LF, UTF-8)
+- `tsconfig.json` / `tsconfig.app.json` / `tsconfig.node.json` — TypeScript configuration for Vue 3 + Vite
 - Git hooks config — Auto-format and lint on commit
+
+### TypeScript Configuration
+
+The included TypeScript configs are optimized for Vue 3 + Vite projects:
+
+**Key Features:**
+- ✅ `types: []` in app config — prevents @types conflicts with ESLint
+- ✅ `lib: ["ES2022"]` — modern JS features (Object.hasOwn, String.replaceAll)
+- ✅ `exclude: ["**/.*"]` — excludes hidden config files from type checking
+- ✅ Project references — separate configs for app code vs build tooling
+- ✅ Strict mode enabled with unused variable checks
+- ✅ Path aliases (`@/*` → `./src/*`)
 
 ## Migration Guide
 
@@ -241,12 +259,15 @@ bunx bagel-lint-setup
 # 3. Simplify eslint.config.js to one line
 echo "export { default } from '@bagelink/lint-config/eslint'" > eslint.config.js
 
-# 4. Remove old config files
+# 4. Remove old config files (if upgrading)
 rm -f prettier.config.cjs .eslintrc.* .prettierrc.*
 
-# 5. Update package.json (see Full Setup Guide)
+# 5. Review auto-copied TypeScript configs (customize if needed)
+# tsconfig.json, tsconfig.app.json, tsconfig.node.json
 
-# 6. Test
+# 6. Update package.json (see Full Setup Guide)
+
+# 7. Test
 bun run lint
 bun run format
 ```
@@ -268,6 +289,13 @@ Ensure `eslint.config.js` is at your project root and uses ES module syntax.
 
 Check `.prettierignore` is in your project root. Run `bunx bagel-lint-setup` to regenerate.
 
+### TypeScript Errors
+
+If you get TypeScript errors about conflicting types:
+- Check that `tsconfig.app.json` has `"types": []` (prevents auto-including @types)
+- Ensure `exclude: ["**/.*"]` is present to exclude config files
+- Run `bunx bagel-lint-setup` to regenerate configs from the latest version
+
 ## Package Exports
 
 The following can be imported in your project:
@@ -279,6 +307,9 @@ The following can be imported in your project:
 - `@bagelink/lint-config/vscode` — VS Code settings
 - `@bagelink/lint-config/prettierignore` — Prettier ignore patterns
 - `@bagelink/lint-config/editorconfig` — EditorConfig settings
+- `@bagelink/lint-config/tsconfig` — Root TypeScript config
+- `@bagelink/lint-config/tsconfig/app` — App TypeScript config
+- `@bagelink/lint-config/tsconfig/node` — Node/Vite TypeScript config
 
 ## License
 
