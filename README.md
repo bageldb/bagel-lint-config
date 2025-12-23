@@ -1,4 +1,4 @@
-# @bagel/lint-config
+# @bagelink/lint-config
 
 ESLint and Prettier configuration for Vue 3 + TypeScript projects.
 
@@ -11,16 +11,24 @@ ESLint and Prettier configuration for Vue 3 + TypeScript projects.
 
 ## Installation
 
-### Using Bun
+### From npm (once published)
 
 ```bash
-bun add -d @bagel/lint-config eslint prettier eslint-plugin-vue eslint-config-prettier @typescript-eslint/eslint-plugin @typescript-eslint/parser vue-eslint-parser typescript
+# Bun
+bun add -d @bagelink/lint-config eslint prettier eslint-plugin-vue eslint-config-prettier @typescript-eslint/eslint-plugin @typescript-eslint/parser vue-eslint-parser typescript
+
+# npm
+npm install -D @bagelink/lint-config eslint prettier eslint-plugin-vue eslint-config-prettier @typescript-eslint/eslint-plugin @typescript-eslint/parser vue-eslint-parser typescript
 ```
 
-### Using npm
+### From GitHub
 
 ```bash
-npm install -D @bagel/lint-config eslint prettier eslint-plugin-vue eslint-config-prettier @typescript-eslint/eslint-plugin @typescript-eslint/parser vue-eslint-parser typescript
+# Bun
+bun add -d github:bageldb/lint-config eslint prettier eslint-plugin-vue eslint-config-prettier @typescript-eslint/eslint-plugin @typescript-eslint/parser vue-eslint-parser typescript
+
+# npm
+npm install -D github:bageldb/lint-config eslint prettier eslint-plugin-vue eslint-config-prettier @typescript-eslint/eslint-plugin @typescript-eslint/parser vue-eslint-parser typescript
 ```
 
 ## Usage
@@ -30,7 +38,7 @@ npm install -D @bagel/lint-config eslint prettier eslint-plugin-vue eslint-confi
 Create `eslint.config.js` at your project root:
 
 ```js
-import bagelConfig from '@bagel/lint-config/eslint'
+import bagelConfig from '@bagelink/lint-config/eslint'
 
 export default [
   ...bagelConfig,
@@ -41,7 +49,7 @@ export default [
 Or import the Vue 3 preset explicitly:
 
 ```js
-import { vue3 } from '@bagel/lint-config/eslint'
+import { vue3 } from '@bagelink/lint-config/eslint'
 
 export default [
   ...vue3,
@@ -53,13 +61,13 @@ export default [
 Create `prettier.config.cjs` at your project root:
 
 ```js
-module.exports = require('@bagel/lint-config/prettier')
+module.exports = require('@bagelink/lint-config/prettier')
 ```
 
 Or extend it:
 
 ```js
-const bagelPrettier = require('@bagel/lint-config/prettier')
+const bagelPrettier = require('@bagelink/lint-config/prettier')
 
 module.exports = {
   ...bagelPrettier,
@@ -94,7 +102,7 @@ Copy the recommended settings to `.vscode/settings.json`:
 Or copy directly from the package:
 
 ```bash
-cp node_modules/@bagel/lint-config/vscode/settings.json .vscode/settings.json
+cp node_modules/@bagelink/lint-config/vscode/settings.json .vscode/settings.json
 ```
 
 ### Package Scripts

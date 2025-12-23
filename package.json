@@ -1,8 +1,16 @@
 {
-  "name": "@bagel/lint-config",
+  "name": "@bagelink/lint-config",
   "version": "1.0.0",
   "type": "module",
   "description": "ESLint and Prettier configuration for Vue 3 + TypeScript projects",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bageldb/lint-config.git"
+  },
+  "homepage": "https://github.com/bageldb/lint-config#readme",
+  "bugs": {
+    "url": "https://github.com/bageldb/lint-config/issues"
+  },
   "exports": {
     "./eslint": "./eslint/index.js",
     "./eslint/vue3": "./eslint/vue3.js",
@@ -41,6 +49,12 @@
     "vue3",
     "typescript",
     "lint-config"
+  ],
+  "files": [
+    "eslint",
+    "prettier",
+    "vscode",
+    "README.md"
   ],
   "license": "MIT"
 }
