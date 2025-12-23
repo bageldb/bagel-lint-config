@@ -73,12 +73,16 @@ export default [
           caughtErrorsIgnorePattern: '^_',
         },
       ],
-      '@typescript-eslint/no-explicit-any': 'warn',
+      '@typescript-eslint/no-explicit-any': 'off',
       '@typescript-eslint/no-non-null-assertion': 'warn',
       '@typescript-eslint/no-unused-expressions': 'error',
       '@typescript-eslint/consistent-type-imports': [
         'error',
-        { prefer: 'type-imports' },
+        { 
+          prefer: 'type-imports',
+          disallowTypeAnnotations: false,
+          fixMixedExportsWithInlineTypeSpecifier: true,
+        },
       ],
       
       // Disable base rule as it conflicts with TS version
@@ -94,12 +98,12 @@ export default [
       // Correctness and quality
       'prefer-const': 'error',
       'no-debugger': 'error',
-      'no-console': 'warn',
+      'no-console': 'off',
       'no-var': 'error',
       'no-undef': 'error',
       'eqeqeq': ['error', 'always', { null: 'ignore' }],
       'no-constant-condition': 'error',
-      'no-duplicate-imports': 'error',
+      'no-duplicate-imports': 'off', // Allow splitting type imports from regular imports
       
       // Vue 3 + <script setup> specific overrides
       'vue/multi-word-component-names': 'off',

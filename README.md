@@ -207,9 +207,10 @@ Automatically runs on every commit (configured via `simple-git-hooks`):
 - ✅ Vue 3 recommended rules (including `<script setup>`)
 - ✅ TypeScript recommended rules
 - ✅ Browser, Node, and ES2021 globals
-- ✅ `prefer-const`, `no-debugger`, `no-console` (warn)
+- ✅ `prefer-const`, `no-debugger`
 - ✅ Unused variables error (except `_` prefixed)
-- ✅ Consistent type imports
+- ✅ Consistent type imports (allows splitting type and regular imports)
+- ✅ `console` and `any` are allowed
 - ❌ No formatting rules (handled by Prettier)
 - ❌ No pedantic preferences
 
