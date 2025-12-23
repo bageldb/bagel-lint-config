@@ -24,6 +24,9 @@ echo "export { default } from '@bagelink/lint-config/eslint'" > eslint.config.js
 
 # Setup git hooks
 bun run prepare
+
+# To update from GitHub and reapply configs (one command!)
+bunx bagel-lint-setup --upgrade
 ```
 
 See [Full Setup Guide](#full-setup-guide) below for complete instructions.
@@ -244,31 +247,55 @@ The included TypeScript configs are optimized for Vue 3 + Vite projects:
 - ✅ Strict mode enabled with unused variable checks
 - ✅ Path aliases (`@/*` → `./src/*`)
 
+## Upgrading
+
+### Update to Latest Version (One Command)
+
+```bash
+# Update from GitHub and reapply all configs
+bunx bagel-lint-setup --upgrade
+
+# Then test
+bun run lint
+bun run format
+```
+
+This single command:
+1. ✅ Pulls latest version from GitHub
+2. ✅ Overwrites all config files with updates
+3. ✅ Auto-detects your package manager (bun/npm/yarn/pnpm)
+
 ## Migration Guide
 
 ### From Previous Versions
 
 ```bash
-# 1. Update package
-bun update @bagelink/lint-config
+# 1. Pull latest and reapply configs
+bunx bagel-lint-setup --upgrade
 
-# 2. Run setup script
-bunx bagel-lint-setup
-
-# 3. Simplify eslint.config.js to one line
+# 2. Simplify eslint.config.js to one line
 echo "export { default } from '@bagelink/lint-config/eslint'" > eslint.config.js
 
-# 4. Remove old config files (if upgrading)
+# 3. Remove old config files (if upgrading from older setup)
 rm -f prettier.config.cjs .eslintrc.* .prettierrc.*
 
-# 5. Review auto-copied TypeScript configs (customize if needed)
-# tsconfig.json, tsconfig.app.json, tsconfig.node.json
+# 4. Update package.json (see Full Setup Guide)
 
-# 6. Update package.json (see Full Setup Guide)
-
-# 7. Test
+# 5. Test
 bun run lint
 bun run format
+```
+
+### Manual Update (Alternative)
+
+If you prefer to control each step:
+
+```bash
+# 1. Update package manually
+bun update @bagelink/lint-config
+
+# 2. Force reapply configs
+bunx bagel-lint-setup --force
 ```
 
 ## Troubleshooting
