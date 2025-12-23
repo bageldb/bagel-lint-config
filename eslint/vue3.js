@@ -75,13 +75,11 @@ export default [
       ],
       '@typescript-eslint/no-explicit-any': 'off',
       '@typescript-eslint/no-non-null-assertion': 'warn',
-      '@typescript-eslint/no-unused-expressions': 'error',
       '@typescript-eslint/consistent-type-imports': [
         'error',
         { 
           prefer: 'type-imports',
           disallowTypeAnnotations: false,
-          fixMixedExportsWithInlineTypeSpecifier: true,
         },
       ],
       
