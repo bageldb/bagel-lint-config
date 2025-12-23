@@ -15,7 +15,14 @@
     "./eslint": "./eslint/index.js",
     "./eslint/vue3": "./eslint/vue3.js",
     "./prettier": "./prettier/index.cjs",
+    "./prettierignore": "./prettier/.prettierignore",
+    "./editorconfig": "./editorconfig/.editorconfig",
+    "./lint-staged": "./git-hooks/lint-staged.config.js",
+    "./git-hooks": "./git-hooks/simple-git-hooks.config.js",
     "./vscode": "./vscode/settings.json"
+  },
+  "bin": {
+    "bagel-lint-setup": "./scripts/postinstall.js"
   },
   "scripts": {
     "lint": "eslint . --max-warnings=0",
@@ -55,6 +62,9 @@
   "files": [
     "eslint",
     "prettier",
+    "editorconfig",
+    "git-hooks",
+    "scripts",
     "vscode",
     "README.md"
   ],

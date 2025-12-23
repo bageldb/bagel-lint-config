@@ -1,0 +1,37 @@
+# Dependencies
+node_modules
+bun.lock
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Build outputs
+dist
+build
+.output
+.vite
+.cache
+
+# IDE
+.vscode
+.idea
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Public assets
+public
+
+# Generated files
+*.min.js
+*.min.css
+
+# Bagel specific
+**/bagelink/packages/**
+
+# Config files (handled by linter)
+.eslintrc*
+.prettierrc*
+
