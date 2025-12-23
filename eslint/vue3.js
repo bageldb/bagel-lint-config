@@ -4,6 +4,7 @@ import tseslint from '@typescript-eslint/eslint-plugin'
 import tsparser from '@typescript-eslint/parser'
 import vueParser from 'vue-eslint-parser'
 import eslintConfigPrettier from 'eslint-config-prettier'
+import globals from 'globals'
 
 export default [
   // Base recommended rules
@@ -27,6 +28,23 @@ export default [
         sourceType: 'module',
         parser: tsparser,
         extraFileExtensions: ['.vue'],
+      },
+      globals: {
+        ...globals.browser,
+        ...globals.node,
+        ...globals.es2021,
+      },
+    },
+  },
+  
+  // CommonJS files configuration
+  {
+    files: ['**/*.cjs'],
+    languageOptions: {
+      sourceType: 'commonjs',
+      globals: {
+        ...globals.node,
+        ...globals.commonjs,
       },
     },
   },
@@ -60,7 +78,7 @@ export default [
       '@typescript-eslint/no-unused-expressions': 'error',
       '@typescript-eslint/consistent-type-imports': [
         'error',
-        { prefer: 'type-imports', fixable: 'code' },
+        { prefer: 'type-imports' },
       ],
       
       // Disable base rule as it conflicts with TS version

@@ -15,20 +15,20 @@ ESLint and Prettier configuration for Vue 3 + TypeScript projects.
 
 ```bash
 # Bun
-bun add -d @bagelink/lint-config eslint prettier eslint-plugin-vue eslint-config-prettier @typescript-eslint/eslint-plugin @typescript-eslint/parser vue-eslint-parser typescript
+bun add -d @bagelink/lint-config eslint prettier eslint-plugin-vue eslint-config-prettier globals @typescript-eslint/eslint-plugin @typescript-eslint/parser vue-eslint-parser typescript
 
 # npm
-npm install -D @bagelink/lint-config eslint prettier eslint-plugin-vue eslint-config-prettier @typescript-eslint/eslint-plugin @typescript-eslint/parser vue-eslint-parser typescript
+npm install -D @bagelink/lint-config eslint prettier eslint-plugin-vue eslint-config-prettier globals @typescript-eslint/eslint-plugin @typescript-eslint/parser vue-eslint-parser typescript
 ```
 
 ### From GitHub
 
 ```bash
 # Bun
-bun add -d github:bageldb/lint-config eslint prettier eslint-plugin-vue eslint-config-prettier @typescript-eslint/eslint-plugin @typescript-eslint/parser vue-eslint-parser typescript
+bun add -d github:bageldb/lint-config eslint prettier eslint-plugin-vue eslint-config-prettier globals @typescript-eslint/eslint-plugin @typescript-eslint/parser vue-eslint-parser typescript
 
 # npm
-npm install -D github:bageldb/lint-config eslint prettier eslint-plugin-vue eslint-config-prettier @typescript-eslint/eslint-plugin @typescript-eslint/parser vue-eslint-parser typescript
+npm install -D github:bageldb/lint-config eslint prettier eslint-plugin-vue eslint-config-prettier globals @typescript-eslint/eslint-plugin @typescript-eslint/parser vue-eslint-parser typescript
 ```
 
 ## Usage
