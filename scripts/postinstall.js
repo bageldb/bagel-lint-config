@@ -27,12 +27,26 @@ const filesToCopy = [
     src: path.join(__dirname, '../tsconfig/tsconfig.node.json'),
     dest: path.join(process.cwd(), 'tsconfig.node.json'),
   },
+  {
+    src: path.join(__dirname, '../vscode/settings.json'),
+    dest: path.join(process.cwd(), '.vscode/settings.json'),
+  },
+  {
+    src: path.join(__dirname, '../vscode/extensions.json'),
+    dest: path.join(process.cwd(), '.vscode/extensions.json'),
+  },
 ]
 
 console.log('📦 Setting up @bagelink/lint-config...')
 
 filesToCopy.forEach(({ src, dest }) => {
   try {
+    // Create parent directory if it doesn't exist
+    const destDir = path.dirname(dest)
+    if (!fs.existsSync(destDir)) {
+      fs.mkdirSync(destDir, { recursive: true })
+    }
+
     // Only copy if destination doesn't exist
     if (!fs.existsSync(dest)) {
       fs.copyFileSync(src, dest)

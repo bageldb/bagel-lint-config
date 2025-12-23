@@ -22,7 +22,8 @@
     "./tsconfig": "./tsconfig/tsconfig.json",
     "./tsconfig/app": "./tsconfig/tsconfig.app.json",
     "./tsconfig/node": "./tsconfig/tsconfig.node.json",
-    "./vscode": "./vscode/settings.json"
+    "./vscode/settings": "./vscode/settings.json",
+    "./vscode/extensions": "./vscode/extensions.json"
   },
   "bin": {
     "bagel-lint-setup": "./scripts/postinstall.js"

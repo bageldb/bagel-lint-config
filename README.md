@@ -64,12 +64,14 @@ bun add -d @bagelink/lint-config eslint prettier eslint-plugin-vue eslint-config
 bunx bagel-lint-setup
 ```
 
-This copies the following to your project root:
+This copies the following to your project:
 - `.prettierignore`
 - `.editorconfig`
 - `tsconfig.json`
 - `tsconfig.app.json`
 - `tsconfig.node.json`
+- `.vscode/settings.json` — Format on save, ESLint integration
+- `.vscode/extensions.json` — Recommended VS Code extensions
 
 ### 3. Create ESLint Config
 
@@ -127,29 +129,23 @@ Add these configurations:
 bun run prepare
 ```
 
-### 6. (Optional) VS Code Settings
+### 6. Install VS Code Extensions
 
-Copy recommended settings to `.vscode/settings.json`:
+When you open the project in VS Code, you'll be prompted to install recommended extensions:
+- Prettier
+- ESLint
+- Vue Language Features (Volar)
+
+Click "Install All" when prompted, or install manually:
 
 ```bash
-mkdir -p .vscode
-cp node_modules/@bagelink/lint-config/vscode/settings.json .vscode/settings.json
+code --install-extension esbenp.prettier-vscode
+code --install-extension dbaeumer.vscode-eslint
+code --install-extension vue.volar
+code --install-extension vue.vscode-typescript-vue-plugin
 ```
 
-Or create manually:
-
-```json
-{
-  "editor.formatOnSave": true,
-  "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": "explicit"
-  },
-  "eslint.enable": true,
-  "eslint.useFlatConfig": true,
-  "eslint.validate": ["javascript", "javascriptreact", "typescript", "typescriptreact", "vue"]
-}
-```
+After installing extensions, **reload VS Code** for format-on-save to activate.
 
 ## Advanced Usage
 
@@ -231,6 +227,8 @@ Automatically runs on every commit (configured via `simple-git-hooks`):
 - `.prettierignore` — Ignore build outputs, dependencies, IDE files
 - `.editorconfig` — Consistent editor settings (2 spaces, LF, UTF-8)
 - `tsconfig.json` / `tsconfig.app.json` / `tsconfig.node.json` — TypeScript configuration for Vue 3 + Vite
+- `.vscode/settings.json` — Format on save, ESLint auto-fix
+- `.vscode/extensions.json` — Recommended VS Code extensions
 - Git hooks config — Auto-format and lint on commit
 
 ### TypeScript Configuration
@@ -285,6 +283,15 @@ bun run prepare
 
 Ensure `eslint.config.js` is at your project root and uses ES module syntax.
 
+### Format on Save Not Working
+
+1. **Install required VS Code extensions** (see `.vscode/extensions.json`)
+2. **Reload VS Code** after installing
+3. Check `.vscode/settings.json` exists with `"editor.formatOnSave": true`
+4. Verify Prettier is set as default formatter:
+   - Right-click in a file → "Format Document With..." → "Configure Default Formatter"
+   - Select "Prettier - Code formatter"
+
 ### Prettier Ignoring Files
 
 Check `.prettierignore` is in your project root. Run `bunx bagel-lint-setup` to regenerate.
@@ -304,7 +311,8 @@ The following can be imported in your project:
 - `@bagelink/lint-config/prettier` — Prettier config
 - `@bagelink/lint-config/lint-staged` — lint-staged config
 - `@bagelink/lint-config/git-hooks` — simple-git-hooks config
-- `@bagelink/lint-config/vscode` — VS Code settings
+- `@bagelink/lint-config/vscode/settings` — VS Code settings
+- `@bagelink/lint-config/vscode/extensions` — VS Code extensions
 - `@bagelink/lint-config/prettierignore` — Prettier ignore patterns
 - `@bagelink/lint-config/editorconfig` — EditorConfig settings
 - `@bagelink/lint-config/tsconfig` — Root TypeScript config
