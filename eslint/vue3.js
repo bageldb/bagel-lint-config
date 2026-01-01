@@ -80,8 +80,10 @@ export default [
         { 
           prefer: 'type-imports',
           disallowTypeAnnotations: false,
+          fixMixedExportsWithInlineTypeSpecifier: true,
         },
       ],
+      '@typescript-eslint/no-duplicate-imports': 'off',
       
       // Disable base rule as it conflicts with TS version
       'no-unused-vars': 'off',
