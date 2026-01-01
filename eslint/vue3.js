@@ -80,7 +80,7 @@ export default [
         { 
           prefer: 'type-imports',
           disallowTypeAnnotations: false,
-          fixMixedExportsWithInlineTypeSpecifier: true,
+          fixStyle: 'inline-type-imports',
         },
       ],
       '@typescript-eslint/no-duplicate-imports': 'off',
